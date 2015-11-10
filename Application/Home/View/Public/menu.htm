@@ -1,0 +1,81 @@
+<div class="sidebar" id="sidebar">
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+    </script>
+
+    <ul class="nav nav-list">
+
+
+        <li class="active open">
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-list"></i>
+                <span class="menu-text"> {$Think.lang.menu_namespace_list} </span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+
+            <ul class="submenu">
+                <volist name="namespace" id="ns">
+                    <li <if condition="($ns eq $now_namespace) AND ( CONTROLLER_NAME eq 'Index' ) ">class="active"</if>>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-double-angle-right"></i>
+                            {$ns}
+                            <b class="arrow icon-angle-down"></b>
+                        </a>
+                        <ul class="submenu">
+                            <li <if condition="($ns eq $now_namespace) AND ( CONTROLLER_NAME eq 'Index' ) AND ( ACTION_NAME eq 'index' ) ">class="active"</if>>
+                                <a href="{:U('Home/Index/index',array('namespace'=>$ns))}">
+                                    <i class="icon-double-angle-right"></i>
+                                    {$Think.lang.menu_namespace_detail}
+                                </a>
+                            </li>
+                            <li <if condition="($ns eq $now_namespace) AND ( CONTROLLER_NAME eq 'Index' ) AND ( ACTION_NAME eq 'getIndexs' ) ">class="active"</if>>
+                                <a href="{:U('Home/Index/getIndexs',array('namespace'=>$ns))}">
+                                    <i class="icon-double-angle-right"></i>
+                                    {$Think.lang.menu_namespace_indexs}
+                                </a>
+                            </li>
+                            <li <if condition="($ns eq $now_namespace) AND ( CONTROLLER_NAME eq 'Index' ) AND ( ACTION_NAME eq 'getsets' ) ">class="active"</if>>
+                                <a href="{:U('Home/Index/getsets',array('namespace'=>$ns))}">
+                                    <i class="icon-double-angle-right"></i>
+                                    {$Think.lang.menu_namespace_sets}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </volist>
+            </ul>
+
+            <a href="#" class="dropdown-toggle">
+                <i class="icon-list"></i>
+                <span class="menu-text">{$Think.lang.menu_udf_title}</span>
+
+                <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+                <li <if condition="( CONTROLLER_NAME eq 'UdfManage' ) AND ( ACTION_NAME eq 'create' ) ">class="active"</if>>
+                    <a href="{:U('Home/UdfManage/create')}">
+                        <i class="icon-double-angle-right"></i>
+                        {$Think.lang.menu_udf_add}
+                    </a>
+                </li>
+                <li <if condition="( CONTROLLER_NAME eq 'UdfManage' ) AND ( ACTION_NAME eq 'alist' ) ">class="active"</if>>
+                    <a href="{:U('Home/UdfManage/alist')}">
+                        <i class="icon-double-angle-right"></i>
+                        {$Think.lang.menu_udf_list}
+                    </a>
+                </li>
+            </ul>
+
+        </li>
+
+    </ul><!-- /.nav-list -->
+
+    <div class="sidebar-collapse" id="sidebar-collapse">
+        <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+    </div>
+
+    <script type="text/javascript">
+        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+    </script>
+</div>

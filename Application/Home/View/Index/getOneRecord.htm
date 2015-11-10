@@ -1,0 +1,84 @@
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            {$now_namespace} - {$set} - {$rekey}
+            <small>
+                <i class="icon-double-angle-right"></i>
+                OneRecord
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+
+
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <form class="form-horizontal" role="form">
+
+                    <volist name="record" id="r" key="bigOriginKey">
+                        <php>$bigkey = $key;</php>
+                        <if condition="!is_array($r)">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-{$bigkey}">{$bigOriginKey}、{$bigkey}</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="{$key}" id="form-field-{$bigkey}" class="col-xs-10 col-sm-5" value="{$r}" />
+                            </div>
+                        </div>
+
+                        <else/>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right" for="form-field-{$bigkey}">{$bigOriginKey}、{$bigkey}</label>
+                            <div class="col-sm-9">
+                                <table class="table" style="width:600px;" >
+                                    <volist name="r" id="rr" empty="$empty">
+                                        <php>$secondkey = $key;</php>
+                                        <tr>
+                                            <th>{$secondkey}</th>
+                                            <td>
+                                                <if condition="!is_array($rr)">
+                                                    <input type="text" name="{$bigkey}-{$secondkey}" id="form-field-{$bigkey}" style="width: 100%" value="{$rr}" />
+                                                <else/>
+                                                    <table class="table" style="width:400px;" >
+                                                        <volist name="rr" id="rrr">
+                                                            <tr>
+                                                                <th>{$key}</th>
+                                                                <td><input type="text" name="{$bigkey}-{$secondkey}-{$key}"  style="width: 100%" value="{$rrr}" /></td>
+                                                            </tr>
+                                                        </volist>
+                                                    </table>
+                                                </if>
+                                            </td>
+                                        </tr>
+                                    </volist>
+                                </table>
+                            </div>
+                        </div>
+                        </if>
+                    </volist>
+
+
+                <div class="clearfix form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button class="btn btn-info" type="button">
+                            <i class="icon-ok bigger-110"></i>
+                            {$Think.lang.submit}
+                        </button>
+
+                        &nbsp; &nbsp; &nbsp;
+                        <button class="btn" type="reset" onclick="location.href='{$_SERVER['HTTP_REFERER']}';">
+                            <i class="icon-undo bigger-110"></i>
+                            {$Think.lang.goback}
+                        </button>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>

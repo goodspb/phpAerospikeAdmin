@@ -1,0 +1,17 @@
+{
+  "name": "goodspb/php-aerospike-admin",
+  "description": "Aerospike Web GUI",
+  "license": "MIT",
+  "version": "1.0.0",
+  "keywords": ["aerospike", "php", "nosql"],
+  "authors": [
+    {
+      "name": "goodspb",
+      "email": "goodspbluo@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "minimum-stability": "stable"
+}

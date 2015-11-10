@@ -1,0 +1,143 @@
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            {$now_namespace} - {$set}
+            <small>
+                <i class="icon-double-angle-right"></i>
+                Records
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+
+    <div class="row">
+
+
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+
+            <div class="row">
+
+
+                <div class="col-xs-12">
+
+                    <div class="table-responsive">
+                        <table id="sample-table-2" class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="center">
+                                    <label>
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </th>
+                                <th>#</th>
+                                <th>key</th>
+                                <volist name="column" key="ck" id="cl">
+                                    <if condition="$ck elt 5">
+                                        <th>{$cl}</th>
+                                    </if>
+                                </volist>
+                                <if condition="count($column) egt 5">
+                                    <th>{$Think.lang.omission}</th>
+                                </if>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <volist name="list" key="k" id="l">
+                            <tr>
+                                <td class="center">
+                                    <label>
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </td>
+                                <td>{$k}</td>
+                                <td>{$key}</td>
+
+                                <php>
+                                    $real_key = $key;
+                                    $after = array_values($l);
+                                </php>
+                                <volist name="after" key="ak" id="al">
+                                    <if condition="$ak elt 5">
+                                        <td>
+                                            <php> echo is_array($al) ? L('records_array') : $al ; </php>
+                                        </td>
+                                    </if>
+                                </volist>
+                                <if condition="count($column) egt 5">
+                                    <td>...</td>
+                                </if>
+                                <td>
+                                    <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
+
+                                        <a class="green" href="{:U('Home/Index/getOneRecord',array('set'=>$set,'key'=>$real_key))}">
+                                            <i class="icon-pencil bigger-130"></i>
+                                        </a>
+
+                                        <a class="red" href="{:U('Home/Index/deleteRecord',array('set'=>$set,'key'=>$real_key,'count'=>$count))}">
+                                            <i class="icon-trash bigger-130"></i>
+                                        </a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            </volist>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- inline scripts related to this page -->
+
+<script type="text/javascript">
+    jQuery(function($) {
+        var oTable1 = $('#sample-table-2').dataTable( {
+            "aoColumns": [
+                { "bSortable": false },
+                null, null,
+                <php>
+                    $counter = count($column) >= 5 ?  5+1 : count($column);
+                    for($i=1;$i<=$counter;$i++){
+                        echo 'null,';
+                    }
+                </php>
+                { "bSortable": false }
+            ] } );
+
+        $('table th input:checkbox').on('click' , function(){
+            var that = this;
+            $(this).closest('table').find('tr > td:first-child input:checkbox')
+                    .each(function(){
+                        this.checked = that.checked;
+                        $(this).closest('tr').toggleClass('selected');
+                    });
+
+        });
+
+
+        $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
+        function tooltip_placement(context, source) {
+            var $source = $(source);
+            var $parent = $source.closest('table')
+            var off1 = $parent.offset();
+            var w1 = $parent.width();
+
+            var off2 = $source.offset();
+            var w2 = $source.width();
+
+            if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
+            return 'left';
+        }
+    })
+</script>

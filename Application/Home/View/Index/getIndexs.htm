@@ -1,0 +1,89 @@
+<div class="page-content">
+
+    <div class="page-header">
+        <h1>
+            {$Think.lang.index_title}
+            <small>
+                <i class="icon-double-angle-right"></i>
+                {$now_namespace}
+            </small>
+            <label class="pull-right inline">
+                <button class="btn btn-primary" onclick="location.href='{:U('Home/Index/ManageIndex')}';">
+                    <i class="icon-plus align-top bigger-125"></i>
+                    {$Think.lang.index_add}
+                </button>
+            </label>
+        </h1>
+
+    </div><!-- /.page-header -->
+
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="center">
+                                    <label>
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </th>
+                                <th>{$Think.lang.index_belong_to_set}</th>
+                                <th>{$Think.lang.index_name}</th>
+                                <th>bins</th>
+                                <th>type</th>
+                                <th>path</th>
+                                <th>sync_state</th>
+                                <th>state</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <!--循环-->
+                            <volist name="indexs" id="l">
+                                <tr>
+                                    <td class="center">
+                                        <label>
+                                            <input type="checkbox" class="ace" />
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        {$l['set']}
+                                    </td>
+                                    <td>{$l['indexname']}</td>
+                                    <td>{$l['bins']}</td>
+                                    <td>{$l['type']}</td>
+                                    <td>{$l['path']}</td>
+                                    <td>{$l['sync_state']}</td>
+                                    <td>{$l['state']}</td>
+                                    <td>
+                                        <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                            <form class="form-horizontal" role="form" method="post" action="{:U('Home/Index/ManageIndex')}">
+                                            <input type="hidden" name="indexneme" value="{$l['indexname']}">
+                                            <input type="hidden" name="do" value="delete">
+                                            <button class="btn btn-xs btn-danger" type="submit">
+                                                <i class="icon-trash bigger-120"></i>
+                                            </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /span -->
+            </div><!-- /row -->
+
+        </div>
+    </div>
+
+</div>

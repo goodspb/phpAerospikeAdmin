@@ -1,0 +1,86 @@
+<div class="page-content">
+
+    <div class="page-header">
+        <h1>
+            {$Think.lang.set_title}
+            <small>
+                <i class="icon-double-angle-right"></i>
+                {$now_namespace}
+            </small>
+        </h1>
+    </div><!-- /.page-header -->
+
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- PAGE CONTENT BEGINS -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-responsive">
+                        <table id="sample-table-1" class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th class="center">
+                                    <label>
+                                        <input type="checkbox" class="ace" />
+                                        <span class="lbl"></span>
+                                    </label>
+                                </th>
+                                <th>{$Think.lang.set_name}</th>
+                                <th>{$Think.lang.set_objects_num}</th>
+                                <th>{$Think.lang.set_stop_write_count}</th>
+                                <th>{$Think.lang.set_evict_hwm_count}</th>
+                                <th>{$Think.lang.set_enable_xdr}</th>
+                                <th>{$Think.lang.set_delete}</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <!--循环-->
+                            <volist name="list" id="l">
+                                <tr>
+                                    <td class="center">
+                                        <label>
+                                            <input type="checkbox" class="ace" />
+                                            <span class="lbl"></span>
+                                        </label>
+                                    </td>
+
+                                    <td>
+                                        {$l['set_name']}
+                                    </td>
+                                    <td>{$l['n_objects']}</td>
+                                    <td>{$l['set-stop-write-count']}</td>
+                                    <td>{$l['set-evict-hwm-count']}</td>
+                                    <td>{$l['set-enable-xdr']}</td>
+                                    <td><php>echo $l['set-delete']=='true'?L('yes'):L('no');</php></td>
+                                    <td>
+                                        <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
+                                            <button class="btn btn-xs btn-success" onclick="location.href='{:U('Home/Index/getRecords',array('set'=>$l['set_name'],'count'=>$l['n_objects']))}';">
+                                                <i class="icon-list-ul bigger-120"></i>
+                                            </button>
+                                            <!--
+                                            <button class="btn btn-xs btn-info">
+                                                <i class="icon-edit bigger-120"></i>
+                                            </button>
+
+                                            <button class="btn btn-xs btn-danger" onclick="location.href='{:U('Home/Index/deleteSet',array('set'=>$l['set_name']))}';">
+                                                <i class="icon-trash bigger-120"></i>
+                                            </button>
+                                            -->
+                                        </div>
+                                    </td>
+                                </tr>
+                            </volist>
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /span -->
+            </div><!-- /row -->
+
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+</div>
