@@ -30,6 +30,7 @@ return array(
     'msg_interface_error'=>'接口错误',
     'msg_add_success' => '添加成功',
     'msg_add_fail' => '添加错误',
+    'msg_delete_question' => '删除不可逆,确认删除吗?',
     'msg_delete_success' => '删除成功',
     'msg_delete_fail' => '删除失败',
     'msg_upload_fail' => '上传错误',

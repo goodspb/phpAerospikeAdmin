@@ -46,7 +46,14 @@ class BaseController extends Controller{
         parent::display($templateFile,$charset,$contentType,$content,$prefix);
     }
 
-
+    function ajaxResponse($status = 1 , $msg = '' , $data = array()){
+        $ret = array(
+            'status'    => $status,
+            'msg'       => $msg,
+            'data'      => $data
+        );
+        $this->ajaxReturn($ret);
+    }
 
 
 }

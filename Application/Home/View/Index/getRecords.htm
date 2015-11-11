@@ -9,6 +9,10 @@
         </h1>
     </div><!-- /.page-header -->
 
+    <script>
+        var record_delete_url = '{:U('Home/Index/deleteRecord')}';
+    </script>
+
     <div class="row">
 
 
@@ -46,7 +50,7 @@
 
                             <tbody>
                             <volist name="list" key="k" id="l">
-                            <tr>
+                            <tr id="record-{$k}">
                                 <td class="center">
                                     <label>
                                         <input type="checkbox" class="ace" />
@@ -77,7 +81,7 @@
                                             <i class="icon-pencil bigger-130"></i>
                                         </a>
 
-                                        <a class="red" href="{:U('Home/Index/deleteRecord',array('set'=>$set,'key'=>$real_key,'count'=>$count))}">
+                                        <a class="red" href="javascript:confirm_delete({ 'set':'{$set}','key':'{$real_key}','count':'{$count}' },record_delete_url,'record-{$k}')">
                                             <i class="icon-trash bigger-130"></i>
                                         </a>
                                     </div>

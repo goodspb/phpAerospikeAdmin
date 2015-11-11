@@ -16,7 +16,9 @@
         </h1>
 
     </div><!-- /.page-header -->
-
+    <script>
+        var index_delete_url = '{:U("Home/Index/ManageIndex",array("do"=>"delete"))}';
+    </script>
     <div class="row">
         <div class="col-xs-12">
 
@@ -47,7 +49,7 @@
 
                             <!--循环-->
                             <volist name="indexs" id="l">
-                                <tr>
+                                <tr id="index-{$l['indexname']}">
                                     <td class="center">
                                         <label>
                                             <input type="checkbox" class="ace" />
@@ -66,13 +68,9 @@
                                     <td>{$l['state']}</td>
                                     <td>
                                         <div class="visible-md visible-lg hidden-sm hidden-xs btn-group">
-                                            <form class="form-horizontal" role="form" method="post" action="{:U('Home/Index/ManageIndex')}">
-                                            <input type="hidden" name="indexneme" value="{$l['indexname']}">
-                                            <input type="hidden" name="do" value="delete">
-                                            <button class="btn btn-xs btn-danger" type="submit">
+                                            <button class="btn btn-xs btn-danger" type="button" onclick="confirm_delete({ 'indexneme' :'{$l["indexname"]}' },index_delete_url,'index-{$l['indexname']}')" >
                                                 <i class="icon-trash bigger-120"></i>
                                             </button>
-                                            </form>
                                         </div>
                                     </td>
                                 </tr>

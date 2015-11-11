@@ -30,6 +30,7 @@ return array(
     'msg_interface_error'=>'interface error',
     'msg_add_success' => 'create success',
     'msg_add_fail' => 'create fail',
+    'msg_delete_question' => 'Are you sure to delete this item?',
     'msg_delete_success' => 'delete success',
     'msg_delete_fail' => 'delete fail',
     'msg_upload_fail' => 'upload fail',
